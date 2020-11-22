@@ -1,6 +1,6 @@
 '''''''''
 JG November 22, 2020
-from the VoTT CSV file to can now convert to Darknet Format
+from the VoTT CSV file you can now convert to Darknet Format
 '''''''''
 
 import os
