@@ -7,6 +7,7 @@ Description
 - you can choose where to store the *.txt files, either in a brand new folder or in the same folder than the images
 
 Constrainsts
+
 The way i am rounding the floating numbers and storing the txt files might not be the most efficients. With an Alienware i7-8750H, 16GB of RAM and RTX2070Q, it takes about 2min to go through 1141 images, most of them in 1920x1080px. 
 
 
