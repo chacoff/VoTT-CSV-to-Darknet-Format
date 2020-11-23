@@ -1,11 +1,12 @@
 '''''''''
 JG November 22, 2020
-from the VoTT CSV file you can now convert to Darknet Format
+from the VoTT CSV file to can now convert to Darknet Format
 '''''''''
 
 import os
 import pandas as pd
 import cv2
+from tqdm import tqdm
 pd.options.mode.chained_assignment = None  # default='warn'
 
 jpeg_images = os.path.join(os.getcwd(), 'JPEGImages')  # path=
@@ -27,7 +28,6 @@ def manifest_generator(vott_df, manifest_target, path):
 
 
 def csv2darknet(vott_df, labeldict, path, darknet):
-    print('INFO: wait while converting to darknet ...')
     # Encode labels according to labeldict if code's don't exist
     if not "code" in vott_df.columns:
         vott_df['code'] = vott_df["label"].apply(lambda x: labeldict[x])
@@ -37,6 +37,9 @@ def csv2darknet(vott_df, labeldict, path, darknet):
 
     txt_file = ''
     last = ''
+    print('INFO: number of annotations: %s' % len(vott_df))
+    print('INFO: wait while converting to darknet ...')
+    pbar = tqdm(total=len(vott_df))
     for index, row in vott_df.iterrows():
         img = cv2.imread(os.path.join(path, row["image"]), 0).shape
         # print(img[1], img[0])  # width and height
@@ -62,7 +65,8 @@ def csv2darknet(vott_df, labeldict, path, darknet):
         file = open(target, "w")
         file.write(txt_file[1:])  # the line with the calculation per annotation
         file.close()
-
+        pbar.update(1)
+    pbar.close()
     print('INFO: READY! VoTT CSV has been converted to Darknet Format')
     return True
 
