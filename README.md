@@ -2,7 +2,7 @@
 If you are using VoTT to annotate RGB images and later on you want to feed a Yolo, you might need to convert those to Darknet format. 
 In my case, I figured was easier to export VoTT annotations as CSV and later make a small script to get these in Darknet format
 
-<p align="center">
+<p align="right">
 <img src="https://github.com/chacoff/VoTT-CSV-to-Darknet-Format/blob/main/lena_annotated.png" width="256">
 <img src="https://github.com/chacoff/VoTT-CSV-to-Darknet-Format/blob/main/lena_annotated2.png" width="256">
 </p>
